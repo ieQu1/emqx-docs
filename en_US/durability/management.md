@@ -31,7 +31,7 @@ The following parameters can be overridden per [zone](../configuration/configura
 
 ### Durable Storage Configuration
 
-The `<DS>` placeholder stands for "durable storage".  Currently, the available parameter for `<DS>` is `message`.
+The `<DS>` placeholder stands for "durable storage".  Currently, the available parameter for `<DS>` is `messages`.
 
 | Parameter                                 | Description                                                  |
 | ----------------------------------------- | ------------------------------------------------------------ |
@@ -207,7 +207,7 @@ For more detailed information, see [Add Sites](./management.md#add-sites) and [R
 The following REST API endpoints are available for managing and monitoring the built-in durable sessions:
 
 - `/ds/sites`: Lists known sites.
-- `/ds/sites/:site`: Provides information about a site (status, current EMQX node name managing the site, etc.).
+- `/ds/sites/:site`: Provides information about a site (status, name of EMQX node currently managing the site, etc.).
 - `/ds/storages`: Lists durable storage.
 - `/ds/storages/:ds`: Provides information about the durable storage and its shards.
 - `/ds/storages/:ds/replicas`: Lists or updates sites containing replicas of durable storage.
@@ -252,4 +252,3 @@ A rolling average of time (in μs) spent consuming a batch of messages from dura
 These counters are specific to the "wildcard optimized" storage layout. They measure the efficiency of consuming data from local storage. The `seek` primitive is generally slower, so the rate of `emqx_ds_storage_bitfield_lts_counter_next` should ideally grow faster than `seek`.
 
 Increasing the `durable_storage.messages.layout.epoch_bits` parameter can help improve this ratio.
-
